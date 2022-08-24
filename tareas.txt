@@ -1,2 +1,0 @@
-22082022
-Usando los ciclos repetitivos vistos hacer una tabla de multiplicar donde con dos variables indicar de donde hasta donde va a llegar (de uno a 10(tabla del 1))

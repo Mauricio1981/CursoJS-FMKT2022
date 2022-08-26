@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Ejercicios JS</title>
+		<title>Ejercicio JS 24082022</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -30,11 +30,35 @@
 			<!-- Main -->
 			<section id="main" class="wrapper">
 				<div class="inner">
-					<h1 class="major">Tablas de multiplicar</h1>
-					<p>Archivo usado: assets/js/ejercicio-clase22082022.js</p>
+					<h1 class="major">Variables</h1>
+					<p>Archivo usado: assets/js/ejercicio-clase24082022.js</p>
+					<h2>Contador</h2>
 				</div>
 			</section>
-		
+			
+			<section class="wrapper">
+				<div class="inner">
+					<h1>Contador <span id="contador">0</span></h1>
+					<button type="button" id="contar" onclick="contar()">+</button>
+					<hr />
+					<h1>Tablas de Multiplicar</h1>
+					<form class="form">
+						<div class="row gtr-uniform">
+							<div class="col-6 col-12-xsmall">
+								<input type="text" id="num1" placeholder="Valor inicial">
+							</div>
+							<div class="col-6 col-12-xsmall">
+								<input type="text" id="num2" placeholder="Valor final">
+							</div>
+							<div class="col-12 col-12-xsmall">
+								<button type="button" class="button primary" onclick="generarTablas()">Generar Tablas</button>
+							</div>
+						</div>
+					</form>
+					<div id="tables"></div>
+				</div>
+			</section>
+			
 		</div><!--/.wrapper-->
 		
 		<!-- Scripts -->
@@ -46,9 +70,8 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		
-		<!--Clase22082022:-->
-		<!--<script src="assets/js/clase22082022.js"></script>-->
-		<script src="assets/js/ejercicio-clase22082022.js"></script>
+		<!--Clase26082022:-->
+		<script src="assets/js/clase26082022.js"></script>
 		
 	</body>
 </html>

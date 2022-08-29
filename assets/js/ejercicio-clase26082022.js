@@ -1,5 +1,7 @@
 const tope = 10;
 var contador = 0;
+var contadorPersonas = 0;
+var arreglosPersonas = [];
 
 function contar() {
   if (contador < tope) {
@@ -9,7 +11,6 @@ function contar() {
     document.getElementById("contar").setAttribute("disabled", "disabled");
   }
 }
-
 function generarTablas() {
   let num1 = parseInt(document.getElementById("num1").value);
   let num2 = parseInt(document.getElementById("num2").value);
@@ -42,10 +43,32 @@ function viewTablas(x) {
   table += "</tbody></table><hr>";
   return table;
 }
-
 var lista = Array.from(document.getElementsByTagName("li"));
 console.log(lista);
 
+function registrar() {
+  let nombre = document.getElementById("nombre").value;
+  let apellido = document.getElementById("apellido").value;
+  let telefono = document.getElementById("telefono").value;
 
+  if (
+    nombre.trim() !== "" &&
+    apellido.trim() !== "" &&
+    telefono.trim() !== ""
+  ) {
+    contadorP();
+    personas(nombre, apellido, telefono);
+    document.getElementById("form").reset();
+  }
+}
 
-	
+function contadorP() {
+  contadorPersonas++;
+  document.getElementById("contadorPersonas").innerHTML = contadorPersonas;
+}
+function personas(nombre, apellido, telefono) {
+  let data = [nombre, apellido, telefono];
+  arreglosPersonas.push(data);
+  console.log(arreglosPersonas);
+}
+

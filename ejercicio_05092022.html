@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Ejercicio JS 29082022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="title">Curso JS 2022</a>
+			<nav>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<!-- Wrapper -->
+		<div id="wrapper">
+			
+			<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="inner">
+					<h1 class="major">Objetos</h1>
+					<p>Archivo usado: js inline</p>
+					<h2>Contador perros</h2>
+				</div>
+			</section>
+			
+			<section class="wrapper">
+				<div class="inner">
+					<form class="form" id="form">
+						<h1>Cantidad de registrados <span id="contador">0</span></h1>
+						<p id="errors"></p>
+						<div class="row gtr-uniform pt-3">
+							<div class="col-6 col-12-xsmall">
+								<label>Nombre</label>
+								<input type="text" value="" placeholder="Ingrese el nombre" id="name">
+							</div>
+							<div class="col-6 col-12-xsmall">
+								<label>Raza</label>
+								 <input type="text" value="" placeholder="Ingrese la raza" id="raza">
+							</div>
+							<div class="col-6 col-12-xsmall">
+								<label>Estado</label>
+								<select name="estado" id="estado">
+									<option value="1">En adopcion</option>
+									<option value="2">Proceso de adopcion</option>
+									<option value="3">Adoptado</option>
+								</select>
+							</div>
+							<div class="col-6 col-12-xsmall">
+								<button type="button" class="button primary" onclick="return guardarDatos();" id="btnGuardar">Guardar</button>
+							</div>
+						</div>
+					</form>
+					
+					<div>
+						<span id="resultado"></span>
+					</div>
+					<div>
+						<span id="resultado1"></span>
+					</div>
+					<div>
+						<span id="resultado2"></span>
+					</div>
+					<div>
+						<span id="resultado3"></span>
+					</div>
+					
+				</div>
+			</section>
+			
+		</div><!--/.wrapper-->
+		
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		
+		<!--Clase05092022:-->
+		<script type="text/javascript">
+			class perro{
+				constructor(name, raza){
+					this.name = name;
+					this.raza = raza;
+				}
+				modificarEstado(nuevoEstado){
+					this.estado = nuevoEstado;
+				}
+				informarEstado(){
+					switch(this.estado){
+						case "1":
+							return "En adopcion";
+							break;
+						case "2":
+							return "Proceso de adopcion";
+							break;
+						case "3":
+							return "Adoptado";
+							break;
+					}
+				}
+			}
+			
+			var arreglo = [];
+			document.getElementById("name").focus();
+			
+			function guardarDatos(){
+				let name = document.getElementById("name").value;
+				let raza = document.getElementById("raza").value;
+				let estado = document.getElementById("estado").value;
+				let nuevoPerro = new perro(name, raza);
+				nuevoPerro.modificarEstado(estado);
+				arreglo.push(nuevoPerro);
+				document.getElementById("name").value = "";
+				document.getElementById("raza").value = "";
+				document.getElementById("estado").value = "1";
+				document.getElementById("contador").innerHTML = arreglo.length;
+				
+				if (!confirm("Desea agregar mas perros?")) {
+					let todos = "";
+					let estado1 = "";
+					let estado2 = "";
+					let estado3 = "";
+					for (var i=0; i<arreglo.length; i++){
+						todos = todos.concat("<br>" + arreglo[i].name + " " + arreglo[i].raza + " " + arreglo[i].informarEstado());
+						if (arreglo[i].estado == "1") {
+							estado1 = estado1.concat("<br>" + arreglo[i].name + " " + arreglo[i].raza + " " + arreglo[i].informarEstado());
+						}
+						if (arreglo[i].estado == "2") {
+							estado2 = estado2.concat("<br>" + arreglo[i].name + " " + arreglo[i].raza + " " + arreglo[i].informarEstado());
+						}
+						if (arreglo[i].estado == "3") {
+							estado3 = estado3.concat("<br>" + arreglo[i].name + " " + arreglo[i].raza + " " + arreglo[i].informarEstado());
+						}
+					}
+					
+					document.getElementById("resultado").innerHTML = "<br>" + "<strong>Todos los perros</strong>" + "<br>" + todos;
+					if (estado1 != "") {
+						document.getElementById("resultado1").innerHTML = "<br>" + "<strong>Todos los perros en adopcion</strong>" + "<br>" + estado1;
+					} else {
+						document.getElementById("resultado1").innerHTML = "<br>" + "<strong>Todos los perros en adopcion</strong>" + "<br>" + "No hay";
+					}
+					if (estado2 != "") {
+						document.getElementById("resultado2").innerHTML = "<br>" + "<strong>Todos los perros en proceso de adopcion</strong>" + "<br>" + estado2;
+					} else {
+						document.getElementById("resultado2").innerHTML = "<br>" + "<strong>Todos los perros en proceso de adopcion</strong>" + "<br>" + "No hay";
+					}
+					if (estado3 != "") {
+						document.getElementById("resultado3").innerHTML = "<br>" + "<strong>Todos los perros adoptados</strong>" + "<br>" + estado3;
+					} else {
+						document.getElementById("resultado3").innerHTML = "<br>" + "<strong>Todos los perros adoptados</strong>" + "<br>" + "No hay";
+					}
+					document.getElementById("btnGuardar").setAttribute("disabled","disabled");
+				} else {
+					document.getElementById("name").focus();
+				}
+				return false;
+			}
+		</script>
+		
+	</body>
+</html>
